@@ -1,6 +1,7 @@
 package com.svyat.test.testtask.service;
 
 import com.svyat.test.testtask.models.User;
+import com.svyat.test.testtask.repository.OrderRepository;
 import com.svyat.test.testtask.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class UserServiceImplementation implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    OrderRepository orderRepository;
+
     @Override
     public User getById(Long id) {
         log.info("getById():" + id);
@@ -22,9 +26,10 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public void save(User virus) {
-        userRepository.save(virus);
-        log.info("save():" + virus);
+    public void save(User user) {
+        user.getOrders().forEach(orderRepository::save);
+        userRepository.save(user);
+        log.info("save():" + user);
     }
 
     @Override
