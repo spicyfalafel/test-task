@@ -37,3 +37,10 @@ Order: {
 	GET: returns all userObjects
 /user/$ID ($ID - числовой параметр)
 	GET: returns userObject
+	
+# Скриншоты
+![morda 1](morda1.png)
+![morda 2](morda2.png)
+
+# Выводы
+Я совсем немного познакомился с AngularJS, запутался, когда пытался его настроить с webpack'ом, как делал это с Vue.js, поэтому использовал CDN.
