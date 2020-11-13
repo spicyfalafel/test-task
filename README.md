@@ -1,5 +1,15 @@
+
 # test-task
 AngularJs and Spring Boot<br>
+# Инструкция по деплою
+Порт для Postgres по умолчанию: 5433 \
+Просто запустить: <br>
+"mvn package" сгенерит .jar файл в test-task\target\test-task-0.0.1-SNAPSHOT.jar <br>
+"java -jar test-task-0.0.1-SNAPSHOT.jar" - сервер будет на http://localhost:9000/ \
+Деплой: <br>
+В pom.xml сменить <packaging>jar</packaging> на war, файл test-task\target\test-task-0.0.1-SNAPSHOT.war задеплоить на сервер.
+
+# Само задание
 Создать базу данных. В качестве базы данных используется PostgreSQL или H2 (in memory). ORM - Hibernate. В качестве бэка использовать Java + Spring Boot. Бэкенд предоставляет REST API для работы с базой. Работа с базой через spring-data. REST API должен иметь все CRUD методы работы с пользователями.
 
 <br>Фронтенд на AngularJS v1.7 позволяет просматривать список пользователей и каждого в отдельности. (Только read).

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="helloWorldTestApp">
+<html ng-app="helloWorldTestApp" lang="en">
 <head>
-    <title>Hello world</title>
+    <title>Test task</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/my-style.css">
@@ -26,15 +26,14 @@
 
 
 <div id="user-container">
-    <div class="card bg-light mb-3 m-3" style="max-width: 18rem;" ng-repeat="user in allUsers">
+    <div class="card bg-light m-3 w-25" style="max-width: 25rem;" ng-repeat="user in allUsers">
         <div class="card-body flex-column">
-            <h5 class="card-title">{{user.firstName + " " + user.lastName}}</h5>
+            <p class="card-title bold">{{user.firstName + " " + user.lastName}}</p>
             <p class="card-text text-secondary">Orders: {{user.orders.length}}</p>
             <a class="card-link show-orders" href="#" ng-click="showOrders(user.orders)">Show orders</a>
         </div>
     </div>
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="orders-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
@@ -53,13 +52,13 @@
                     <tr>
                         <th>Service name</th>
                         <th>Target Url</th>
-                        <th>Price</th>
+                        <th>Price, $</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="order in currentOrders">
                         <td>{{order.serviceName}}</td>
-                        <td>{{order.targetUrl}}</td>
+                        <td><a href="{{order.targetUrl}}">{{order.targetUrl}}</a></td>
                         <td>{{order.price}}</td>
                     </tr>
                     </tbody>
