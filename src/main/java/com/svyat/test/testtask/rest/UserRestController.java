@@ -41,16 +41,6 @@ public class UserRestController {
         return new ResponseEntity<>(user, headers, HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public ResponseEntity<List<User>> saveAll(@RequestBody @Valid List<User> viruses){
-        HttpHeaders headers = new HttpHeaders();
-        if(viruses == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        this.userService.saveAll(viruses);
-        return new ResponseEntity<>(viruses, headers, HttpStatus.CREATED);
-    }
-
     @PutMapping("{id}")
     public ResponseEntity<User> updateUser(@RequestBody @Valid User user, UriComponentsBuilder builder){
         HttpHeaders headers = new HttpHeaders();
@@ -63,13 +53,16 @@ public class UserRestController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<User> deleteUser(@PathVariable("id") Long id){
-        var virus = this.userService.getById(id);
-        if(virus == null){
+        var user = this.userService.getById(id);
+        if(user == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else{
+
+            this.userService.delete(id);
+            return new ResponseEntity<>(user, HttpStatus.FOUND);
         }
-        this.userService.delete(id);
-        return new ResponseEntity<>(virus, HttpStatus.FOUND);
     }
+
     @GetMapping()
     public ResponseEntity<List<User>> getAllUsers(){
         List<User> all = this.userService.getAll();
