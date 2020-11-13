@@ -6,7 +6,7 @@ helloWorldTestApp.controller("HelloWorldCtrl", ['$scope', '$http', function ($sc
         console.log("getting users...")
         $http({
             method: 'GET',
-            url: '/api/v1/users/',
+            url: '/api/v1/user/',
             headers: {'Content-Type': 'application/json'},
         }).then(function succ(response) {
             $scope.allUsers = response.data
@@ -24,4 +24,3 @@ helloWorldTestApp.controller("HelloWorldCtrl", ['$scope', '$http', function ($sc
         $('#orders-modal').modal('show');
     }
 }])
-
